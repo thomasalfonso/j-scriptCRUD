@@ -21,15 +21,36 @@ function make (req, res) {
 
 // The logic for the Show controller
 async function show (req, res) {
-  console.log(req.params)
+  console.log(req.query)
   let { id } = req.params // Destructure the id off the params.
   let author = await AuthorModel.findById(id) // Find the author by id and add save it to the variable author
   res.render('author/show', { author }) // render the 'author/show' and pass it the {author}
 }
 
+async function destroy(req, res){ 
+  let {id} = req.params;
+  await AuthorModel.findByIdAndRemove(id)
+  res.redirect('/authors') // Redirect to /authors
+}
+
+async function update(req, res){
+  let { id } = req.params // Destructure the id off the params.
+  let author = await AuthorModel.findById(id) // Find the author by id and add save it to the variable author
+  res.render('author/update', { author }) // render the 'author/show' and pass it the {author}
+}
+
+async function put(req,res){
+  let { id } = req.params
+  let { name, bio, gender } = req.body
+  await AuthorModel.findByIdAndUpdate(id, {name, bio, gender})
+  res.redirect(`/authors/${id}`)
+}
 module.exports = {
   create,
   index,
   make,
-  show
+  show,
+  destroy,
+  update,
+  put
 }

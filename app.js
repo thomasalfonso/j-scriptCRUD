@@ -5,7 +5,7 @@ const bodyParser = require('body-parser') // Makes our stream data useable
 const methodOverride = require('method-override') // Allows us to use PUT/PATCH/DELETE, because thr browser only has get&post
 const app = express() // This creates the express app. Notice that it is a function. Dont pass this around the app!
 const port = 3000 // A variable to hold our port number. This will be used to start the server
-const routes = require('./routes')
+const routes = require('./routes/index')
 
 // This is connecting the db. It will create a new db if one doesnt exist already
 // The options object as the second argument is to address deprication warnings

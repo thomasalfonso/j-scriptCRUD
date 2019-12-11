@@ -1,0 +1,28 @@
+<h1>Update Book</h1>
+
+<form method='post' action="/books/{{book.id}}?_method=PUT">
+    <div>
+        <label>Name</label>
+    </div>
+    <div>
+        <input type='text' name='name' value='{{book.name}}'/>
+    </div>
+    <div>
+        <label>Bio</label>
+    </div>
+    <div>
+        <textarea type="text" name='bio' value='{{book.bio}}'></textarea>
+    </div>
+    <div>
+        <label>Classification</label>
+    </div>
+    <div>
+        <select name='classification' value='{{book.classification}}'>
+            <option value='fiction'>fiction</option>
+            <option value='non-fiction'>non-fiction</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value='Submit Form'/>
+    </div>
+</form>
